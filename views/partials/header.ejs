@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Blog</title>
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+  </head>
+  <body>
+    <header class="bg-gray-800 text-white">
+      <!-- Header with dark background and white text -->
+      <nav class="container mx-auto p-5">
+        <!-- Navigation container with padding -->
+        <ul class="flex gap-x-14 justify-center items-center">
+          <!-- Navigation list with flex layout, gap, and center alignment -->
+          <li><a href="/" class="hover:text-blue-500">Home</a></li>
+          <!-- Home link -->
+
+          <li><a href="/all-posts" class="ml-4">View All Posts</a></li>
+          <!-- View All Posts link -->
+          <!-- Conditional rendering based on user session -->
+          <% if (!req.session.userId) { %>
+          <li><a href="/login" class="hover:text-blue-500">Login</a></li>
+          <% } else { %> <% if (req.session.role === 'admin') { %>
+          <li>
+            <a href="/admin" class="hover:text-blue-500">Admin Dashboard</a>
+          </li>
+          <% } %> <% if (req.session.role === 'user') { %>
+          <li>
+            <a href="/user" class="hover:text-blue-500">User Dashboard</a>
+          </li>
+          <% } %>
+          <!-- Show Logout link -->
+
+          <li><a href="/logout" class="hover:text-blue-500">Logout</a></li>
+          <% } %>
+        </ul>
+      </nav>
+    </header>
+  </body>
+</html>

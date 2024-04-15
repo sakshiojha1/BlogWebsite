@@ -1,0 +1,39 @@
+<!-- Views/allPosts.ejs -->
+<%- include('./partials/header', { req: req }) %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <title>All Posts</title>
+  </head>
+  <body class="bg-gray-50">
+    <main class="container mx-auto px-4 py-8">
+      <h1 class="text-4xl font-bold text-center mb-10">All Posts</h1>
+
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <% posts.forEach(post => { %>
+        <li class="border rounded-lg overflow-hidden shadow-md">
+          <a href="/post/<%= post._id %>">
+            <% if (post.image) { %>
+            <img
+              src="<%= post.image %>"
+              alt="<%= post.title %> image"
+              title="<%= post.title %>"
+              class="w-full h-48 object-cover object-center"
+            />
+            <% } %>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold mb-2"><%= post.title %></h3>
+              <p class="text-gray-700">
+                <!-- Add a preview of the post content here if desired -->
+              </p>
+            </div>
+          </a>
+        </li>
+        <% }); %>
+      </ul>
+    </main>
+  </body>
+</html>

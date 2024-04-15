@@ -1,0 +1,70 @@
+<%- include('./partials/header') %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <title>Login</title>
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+      <h1 class="text-3xl font-semibold text-gray-800 mb-6">Login</h1>
+      <!-- Display the login heading -->
+
+      <% if (message) { %>
+      <p class="text-red-500 mb-4"><%= message %></p>
+      <% } %>
+      <form
+        action="/login"
+        method="POST"
+        class="max-w-md mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+      >
+        <!-- Login Form -->
+
+        <div class="mb-4">
+          <!-- Email Input -->
+
+          <label for="email" class="block text-gray-700 text-sm font-bold mb-2"
+            >Email:</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+
+        <div class="mb-6">
+          <!-- Password Input -->
+
+          <label
+            for="password"
+            class="block text-gray-700 text-sm font-bold mb-2"
+            >Password:</label
+          >
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+
+        <div class="flex items-center justify-between">
+          <!-- Submit Button -->
+
+          <button
+            type="submit"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<%- include('./partials/header') %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <title>Admin Dashboard</title>
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+      <!-- Page heading -->
+      <h1 class="text-3xl font-semibold text-gray-800 mb-6">
+        Welcome to the User Dashboard
+      </h1>
+      <!-- Link to create a new post -->
+      <a
+        href="/posts/new"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >Create New Post</a
+      >
+      <!-- <ul class="mt-6">
+        <% posts.forEach(post => { %>
+        <a href="/post/<%= post._id %>">
+          <li class="border-b border-gray-200 py-4 shadow-md px-4">
+            <div class="flex items-center justify-between">
+              <h2 class="text-xl font-semibold text-gray-800">
+                <span class="hover:text-blue-500"> <%= post.title %></span>
+              </h2>
+              <% if (post.image) { %>
+              <img
+                src="<%= post.image %>"
+                alt="<%= post.title %> image"
+                title="<%= post.title %>"
+                class="w-32 h-auto"
+              />
+              <% } %>
+            </div>
+          </li>
+        </a>
+        <% }); %>
+      </ul> -->
+    </div>
+  </body>
+</html>

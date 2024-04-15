@@ -1,0 +1,89 @@
+<%- include('./partials/header') %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <title>Admin Dashboard</title>
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+      <h1 class="text-3xl font-semibold text-gray-800 mb-6">
+        Welcome to the Admin Dashboard
+      </h1>
+
+      <!-- Create New User Button -->
+      <a
+        href="/admin/users/new"
+        class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mb-4"
+      >
+        Create New User
+      </a>
+
+      <!-- User Search Bar -->
+      <form action="/admin/users/search" method="GET" class="mb-4">
+        <input
+          type="text"
+          name="query"
+          placeholder="Search by username or email..."
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+        <button
+          type="submit"
+          class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded ml-2 mt-3"
+        >
+          Search
+        </button>
+      </form>
+
+      <!-- User List -->
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Users</h2>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <% users.forEach(user => { %>
+        <li class="bg-white p-4 rounded shadow-md">
+          <h2 class="text-lg font-semibold text-gray-800">
+            <%= user.username %>
+          </h2>
+          <p class="text-gray-600"><strong>Email:</strong> <%= user.email %></p>
+          <div class="mt-2">
+            <a
+              href="/admin/users/edit/<%= user._id %>"
+              class="text-blue-500 hover:underline mr-2"
+              >Edit</a
+            >
+            <a
+              href="/admin/users/delete/<%= user._id %>"
+              class="text-red-500 hover:underline"
+              >Delete</a
+            >
+          </div>
+        </li>
+        <% }); %>
+      </ul>
+
+      <!-- Post List -->
+      <h2 class="text-2xl font-semibold text-gray-800 mt-8 mb-4">Posts</h2>
+      <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <% posts.forEach(post => { %>
+        <li class="bg-white rounded overflow-hidden shadow-md">
+          <a href="/admin/posts/<%= post._id %>">
+            <img
+              src="<%= post.image %>"
+              alt="<%= post.title %> image"
+              class="w-full h-40 object-cover"
+            />
+          </a>
+          <div class="p-4">
+            <h2 class="text-lg font-semibold text-gray-800 mb-2">
+              <a href="/admin/posts/<%= post._id %>" class="hover:underline"
+                ><%= post.title %></a
+              >
+            </h2>
+          </div>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+  </body>
+</html>

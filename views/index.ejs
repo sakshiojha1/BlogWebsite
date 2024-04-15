@@ -1,0 +1,65 @@
+<%- include('./partials/header', { req: req }) %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <title>Home Page</title>
+  </head>
+  <body class="bg-gray-50">
+    <main class="container mx-auto px-4 py-8">
+      <h1 class="text-4xl font-bold text-center mb-10">
+        Welcome to the Home Page
+      </h1>
+
+      <!-- Introduction Section -->
+      <section id="introduction" class="my-8">
+        <section class="flex justify-between">
+          <h2 class="text-3xl font-semibold mb-4">About Our Blog</h2>
+          <a
+            href="/all-posts"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded h-1/2"
+          >
+            View All Posts
+          </a>
+        </section>
+        <p class="text-lg text-gray-700">
+          This blog is dedicated to all the computer science students who want to share 
+          their experience. We strive to provide insightful and engaging content on the 
+          starting struggles and challenges in the filed of computer science and how you 
+          can overcome those challenges. Whether you're a student or a professional working
+          in this field, we aim to offer valuable information and perspectives to enhance your
+          knowledge and understanding.
+        </p>
+      </section>
+
+      <!-- Latest Posts Section -->
+      <section id="latest-posts" class="my-8">
+        <h2 class="text-3xl font-semibold mb-4">Latest Posts</h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <% posts.forEach(post => { %>
+          <li class="border rounded-lg overflow-hidden shadow-md">
+            <a href="/post/<%= post._id %>">
+              <% if (post.image) { %>
+              <img
+                src="<%= post.image %>"
+                alt="<%= post.title %> image"
+                title="<%= post.title %>"
+                class="w-full h-48 object-cover object-center"
+              />
+              <% } %>
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2"><%= post.title %></h3>
+                <p class="text-gray-700">
+                  <!-- Add a preview of the post content here if desired -->
+                </p>
+              </div>
+            </a>
+          </li>
+          <% }); %>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

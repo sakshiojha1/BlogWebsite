@@ -1,0 +1,41 @@
+<%- include('./partials/header') %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <title>Register</title>
+  </head>
+  <body>
+    <h1>Register</h1>
+    <% if (message) { %>
+    <p><%= message %></p>
+    <% } %>
+    <form action="/register" method="POST">
+      <!-- User registration form -->
+
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required /><br /><br />
+      <!-- Username input field -->
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required /><br /><br />
+      <!-- Email input field -->
+
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+      /><br /><br />
+      <!-- Password input field -->
+
+      <button type="submit">Register</button>
+      <!-- Submit button for the registration form -->
+    </form>
+    <p>Already have an account? <a href="/login">Login here</a></p>
+    <!-- Link to the login page -->
+  </body>
+</html>
